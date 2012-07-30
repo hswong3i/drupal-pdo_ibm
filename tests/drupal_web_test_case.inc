@@ -8,16 +8,19 @@ class DrupalWebTestCase extends UnitTestCase {
 
   function setUp() {
     if (strpos(dirname(__FILE__), 'mysql')) {
-      shell_exec("mysql -u root --password='CHANGE' < " . dirname(__FILE__) . "/drupal_web_test_case.mysql.sql");
+      shell_exec("mysql -u root --password='CHANGE' < " . dirname(__FILE__) . "/initialize.mysql.sql");
     }
     elseif (strpos(dirname(__FILE__), 'oci')) {
-      shell_exec("sqlplus SYS@AL32UTF8/CHANGE AS SYSDBA @" . dirname(__FILE__) . "/drupal_web_test_case.oci.sql");
+      shell_exec("sqlplus SYS@AL32UTF8/CHANGE AS SYSDBA @" . dirname(__FILE__) . "/initialize.oci.sql");
 
       require_once DRUPAL_ROOT . '/includes/install.inc';
       require_once dirname(__FILE__)  . '/../install.inc';
 
       $task = new DatabaseTasks_oci();
       $task->initializeDatabase();
+    }
+    elseif (strpos(dirname(__FILE__), 'ibm')) {
+      shell_exec("sudo -i -u db2inst1 db2 -tvsf " . dirname(__FILE__) , "/initialize.ibm.sql");
     }
   }
 

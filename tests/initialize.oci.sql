@@ -1,7 +1,5 @@
-/**
- * To login sqlplus:
- *   sqlplus SYS@AL32UTF8/CHANGE AS SYSDBA @drupal_web_test_case.oci.sql
- */
+-- To initialize oracle:
+--   sqlplus SYS@AL32UTF8/CHANGE AS SYSDBA @initialize.oci.sql
 
 -- Connect with SYS and create new user "test".
 CONNECT SYS@AL32UTF8/CHANGE AS SYSDBA
