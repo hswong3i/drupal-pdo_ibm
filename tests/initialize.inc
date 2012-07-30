@@ -22,6 +22,9 @@ if (strpos(dirname(__FILE__), 'mysql')) {
 elseif (strpos(dirname(__FILE__), 'oci')) {
   require_once dirname(__FILE__) . '/settings.oci.php';
 }
+elseif (strpos(dirname(__FILE__), 'ibm')) {
+  require_once dirname(__FILE__) . '/settings.ibm.php';
+}
 
 // Clone from _drupal_bootstrap_database().
 // We don't call _drupal_bootstrap_database() directly since don't need to
